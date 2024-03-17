@@ -7,7 +7,7 @@ import { toast, Toaster } from "react-hot-toast";
 import axios from "axios";
 import { storeInSession } from "../common/session";
 import { UserContext } from "../App";
-import { authWithGoogle } from "../common/firebase";
+
 const UserAuthForm = ({ type }) => {
 
   let {
@@ -104,24 +104,24 @@ const UserAuthForm = ({ type }) => {
   };
 
 
-  const handleGoogleAuth = (e) => {
-    e.preventDefault();
-    authWithGoogle().then((user) => {
-      let serverRoute = "/google-auth";
+  // const handleGoogleAuth = (e) => {
+  //   e.preventDefault();
+  //   authWithGoogle().then((user) => {
+  //     let serverRoute = "/google-auth";
 
-      let formData = {
-        access_token: user.accessToken
-      }
+  //     let formData = {
+  //       access_token: user.accessToken
+  //     }
 
-      userAuthThroughServer(serverRoute, formData)
+  //     userAuthThroughServer(serverRoute, formData)
 
 
-    })
-      .catch(err => {
-        toast.error("trouble to login with google")
-      })
+  //   })
+  //     .catch(err => {
+  //       toast.error("trouble to login with google")
+  //     })
 
-  }
+  // }
 
   return (
 
@@ -169,7 +169,7 @@ const UserAuthForm = ({ type }) => {
               {type.replace("-", " ")}
             </button>
 
-            <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
+            {/* <div className="relative w-full flex items-center gap-2 my-10 opacity-10 uppercase text-black font-bold ">
               <hr className="w-1/2 " />
               <p>or</p>
               <hr className="w-1/2 " />
@@ -177,7 +177,7 @@ const UserAuthForm = ({ type }) => {
             <button onClick={handleGoogleAuth} className="btn-dark flex gap-4 w-[90%] m-auto items-center justify-center ">
               <img className="w-5 " src={googleIcon} alt="" />
               Continue With Google
-            </button>
+            </button> */}
 
             {type == "sign-in" ? (
               <p className="mt-6 text-dark-grey text-xl text-center">
